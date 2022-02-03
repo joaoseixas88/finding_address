@@ -15,12 +15,13 @@ interface CodigoPostal{
     ddd: number;     
     siafi: number;    
 }
+
 type codigo_postal = number 
 
-export function Dashboard(){
+export function Main(){
 
     
-    const [codigoPostal, setCodigoPostal] = useState<CodigoPostal[]>([])
+    const [codigoPostal, setCodigoPostal] = useState<CodigoPostal>({} as CodigoPostal)
     const [isCepValid, setIsCepValid] = useState<boolean>(true)
     
     function buscaCep(codigo_postal: codigo_postal) {
@@ -40,7 +41,7 @@ function verificaResultado(codigo_postal: CodigoPostal){
         return (setIsCepValid(false))
     }
     return(
-        setCodigoPostal([codigo_postal]), setIsCepValid(true))
+        setCodigoPostal(codigo_postal), setIsCepValid(true))
     
 }
 
@@ -58,10 +59,7 @@ function verificaResultado(codigo_postal: CodigoPostal){
             />
              
             <ul>                         
-                {!isCepValid ? <InvalidCep /> :    
-                codigoPostal.map((codigo) => {
-                return <CepItem codigoPostal={codigo}/>
-                 })}
+                {!isCepValid ? <InvalidCep /> : <CepItem codigoPostal={codigoPostal} />}
             </ul>
         </Container>
     )

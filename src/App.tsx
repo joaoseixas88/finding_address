@@ -1,4 +1,4 @@
-import { Dashboard } from './components/Dashboard/Dashboard'
+import { Main } from './components/Main/Main'
 
 import { Header } from './components/Header';
 import { GlobalStyle } from './styles/global';
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header />
-      <Dashboard />      
+      <Main />      
       <GlobalStyle />
     </>
   );
